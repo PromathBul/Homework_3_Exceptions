@@ -1,3 +1,5 @@
+import java.util.Date;
+
 public class Check {
     public static int LEN = 6;
 
@@ -38,6 +40,8 @@ public class Check {
                     return false;
             }
         }
+        if(Integer.parseInt(parsingDate[0]) > 31 || Integer.parseInt(parsingDate[1]) > 12 || Integer.parseInt(parsingDate[2]) < 1900 || Integer.parseInt(parsingDate[2]) > new Date().getYear())
+            return false;
         return true;
     }
 
@@ -80,7 +84,7 @@ public class Check {
         if (!array[0] || !array[1] || !array[2])
             throw new RuntimeException("В фамилии, имени или отчестве содержатся не буквенные значения");
         if (!array[3])
-            throw new RuntimeException("Дата рождения неверного формата. Необходимо соблюдать формат: dd.mm.yyyy");
+            throw new RuntimeException("Дата рождения неверного формата. Необходимо соблюдать формат: dd.mm.yyyy. Либо неверно указана дата (от 01 до 31), месяц (от 01 до 12) или год (от 1900 до текущего).");
         if (!array[4])
             throw new RuntimeException("В номере телефона либо содержаться символы, отличные от цифр, либо количество цифр не равно 10.");
         if (!array[5])
